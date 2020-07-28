@@ -1,22 +1,11 @@
-# Terraform Module Template
-This is a template github repo, for a terraform module. A new terraform module, should use this as its starting point.
+# GCP Tamr IAM Permissions
+This module is used to create the IAM bindings that tamr needs to create resources that aren't provisioned by terraform. For example permissions for tamr to use ephemeral dataproc clusters.
 This repo follows the [terraform standard module structure](https://www.terraform.io/docs/modules/index.html#standard-module-structure).
-
-# Examples
-## Basic
-Inline example implementation of the module.  This is the most basic example of what it would look like to use this module.
-```
-module "minimal" {
-  source = "git::https://github.com/Datatamer/terraform-template-repo?ref=0.1.0"
-}
-```
-## Minimal
-Smallest complete fully working example. This example might require extra resources to run the example.
-- [Minimal](https://github.com/Datatamer/terraform-template-repo/tree/master/examples/minimal)
 
 # Resources Created
 This modules creates:
-* a null resource
+* IAM bindings for tamr
+* (optionally) a service account for tamr to use
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
@@ -29,20 +18,24 @@ This modules creates:
 
 | Name | Version |
 |------|---------|
-| null | n/a |
+| google | n/a |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| example | Example variable. | `string` | `"default value"` | no |
+| project\_id | project to create bindings in | `string` | n/a | yes |
+| additional\_users | additional IAM identities to give IAM access to | `list(string)` | `[]` | no |
+| enabled\_bigquery\_perms | Create IAM role bindings to allow the service account to use bigquery | `bool` | `true` | no |
+| enabled\_monitoring\_perms | Create IAM role bindings to allow the service account to write telemetry to stackdriver | `bool` | `true` | no |
+| tamr\_service\_account | If provided this service account will be given permissions tamr needs to run. If not set a service account will be created. | `string` | `""` | no |
+| tamr\_service\_account\_name | Name of service account to create. NOTE: this is only created if tamr\_service\_account is left empty. | `string` | `"tamr"` | no |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| example\_value | Example variable. |
-| null\_resource\_id | An arbitrary value that changes each time the resource is replaced. |
+| service\_account\_email | Email of the service account given permissions to |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
