@@ -58,14 +58,6 @@ resource "google_project_iam_member" "compute_admin" {
   member = local.users[count.index]
 }
 
-#resource "google_project_iam_member" "compute_storageAdmin" {
-#  count      = length(local.users)
-#  depends_on = [google_project_iam_member.owner]
-#
-#  role   = "roles/compute.storageAdmin"
-#  member = local.users[count.index]
-#}
-
 # big query
 resource "google_project_iam_member" "bq_dataEditor" {
   count = var.enabled_bigquery_perms == true ? length(local.users) : 0
