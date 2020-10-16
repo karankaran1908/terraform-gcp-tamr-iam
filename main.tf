@@ -54,8 +54,9 @@ resource "google_project_iam_member" "dataproc_admin" {
 resource "google_project_iam_member" "compute_admin" {
   count = length(local.users)
 
-  role   = "roles/compute.instanceAdmin.v1"
-  member = local.users[count.index]
+  role    = "roles/compute.instanceAdmin.v1"
+  project = var.project_id
+  member  = local.users[count.index]
 }
 
 # big query
