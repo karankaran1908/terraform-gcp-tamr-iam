@@ -59,7 +59,7 @@ resource "google_project_iam_member" "compute_admin" {
   member  = local.users[count.index]
 }
 
-resource "google_project_iam_binding" "service_account_user" {
+resource "google_project_iam_member" "service_account_user" {
   count = length(local.users)
 
   role    = "roles/iam.serviceAccountUser"
