@@ -64,7 +64,7 @@ resource "google_project_iam_member" "service_account_user" {
 
   role    = "roles/iam.serviceAccountUser"
   project = var.project_id
-  members = local.users[count.index]
+  member  = local.users[count.index]
 }
 
 # big query
