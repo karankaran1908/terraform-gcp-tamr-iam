@@ -1,5 +1,8 @@
 # GCP Tamr IAM module
 
+## v1.1.0 - July 27th 2022
+* Add cloudsql admin permissions
+
 ## v1.0.0 - June 1st 2022
 * Set minimum terraform to 1.0.0 and minimum google provider to 4.6.0
 

@@ -91,3 +91,11 @@ resource "google_project_iam_member" "bq_user" {
   project = var.project_id
   member  = local.users[count.index]
 }
+
+# iam
+resource "google_project_iam_member" "cloud_sql_admin" {
+  count   = length(local.users)
+  project = var.project_id
+  role    = "roles/cloudsql.admin"
+  member  = local.users[count.index]
+}
