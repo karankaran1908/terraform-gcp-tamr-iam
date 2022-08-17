@@ -2,6 +2,11 @@
 This module is used to create the IAM bindings that tamr needs to create resources that aren't provisioned by terraform. For example permissions for tamr to use ephemeral dataproc clusters.
 This repo follows the [terraform standard module structure](https://www.terraform.io/docs/modules/index.html#standard-module-structure).
 
+# Examples
+## Minimal
+This is the most basic example of what it would look like to use this module
+- [Minimal](https://github.com/Datatamer/terraform-gcp-tamr-iam/tree/master/examples/minimal)
+
 # Resources Created
 This modules creates:
 * IAM bindings for tamr
