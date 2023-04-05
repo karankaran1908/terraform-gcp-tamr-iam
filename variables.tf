@@ -1,5 +1,4 @@
 variable "tamr_service_account" {
-  default     = ""
   type        = string
   description = "If provided this service account will be given permissions tamr needs to run. If not set a service account will be created."
 }

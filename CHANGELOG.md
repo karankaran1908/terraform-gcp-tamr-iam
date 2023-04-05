@@ -1,5 +1,10 @@
 # GCP Tamr IAM module
 
+## v2.0.0 - April 5th 2023
+* Following input variables now required
+  * tamr_service_account
+* Allows flexibility for the user of this module to either create a new service account or use an existing one
+
 ## v1.1.0 - July 27th 2022
 * Add cloudsql admin permissions
 
