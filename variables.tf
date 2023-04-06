@@ -3,12 +3,6 @@ variable "tamr_service_account" {
   description = "If provided this service account will be given permissions tamr needs to run. If not set a service account will be created."
 }
 
-variable "tamr_service_account_name" {
-  default     = "tamr"
-  type        = string
-  description = "Name of service account to create. NOTE: this is only created if tamr_service_account is left empty."
-}
-
 variable "enabled_monitoring_perms" {
   default     = true
   type        = bool
