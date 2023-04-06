@@ -9,7 +9,10 @@ No provider.
 
 ## Inputs
 
-No input.
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| project\_id | n/a | `string` | n/a | yes |
+| tamr\_service\_account\_name | n/a | `string` | n/a | yes |
 
 ## Outputs
 
