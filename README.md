@@ -31,11 +31,10 @@ This modules creates:
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | project\_id | project to create bindings in | `string` | n/a | yes |
+| tamr\_service\_account | If provided this service account will be given permissions tamr needs to run. If not set a service account will be created. | `string` | n/a | yes |
 | additional\_users | additional IAM identities to give IAM access to | `list(string)` | `[]` | no |
 | enabled\_bigquery\_perms | Create IAM role bindings to allow the service account to use bigquery | `bool` | `true` | no |
 | enabled\_monitoring\_perms | Create IAM role bindings to allow the service account to write telemetry to stackdriver | `bool` | `true` | no |
-| tamr\_service\_account | If provided this service account will be given permissions tamr needs to run. If not set a service account will be created. | `string` | `""` | no |
-| tamr\_service\_account\_name | Name of service account to create. NOTE: this is only created if tamr\_service\_account is left empty. | `string` | `"tamr"` | no |
 
 ## Outputs
 

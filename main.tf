@@ -1,19 +1,10 @@
 locals {
   users = concat(
     [
-      "serviceAccount:${local.tamr_service_account}",
+      "serviceAccount:${var.tamr_service_account}",
     ],
     var.additional_users
   )
-  tamr_service_account = var.tamr_service_account == "" ? google_service_account.tamr_service_account[0].email : var.tamr_service_account
-}
-
-resource "google_service_account" "tamr_service_account" {
-  count = var.tamr_service_account == "" ? 1 : 0
-
-  project      = var.project_id
-  account_id   = var.tamr_service_account_name
-  display_name = "tamr instance(s) service account for interacting with gcp resources"
 }
 
 # stackdriver
@@ -59,6 +50,7 @@ resource "google_project_iam_member" "compute_admin" {
   member  = local.users[count.index]
 }
 
+#tfsec:ignore:google-iam-no-project-level-service-account-impersonation
 resource "google_project_iam_member" "service_account_user" {
   count = length(local.users)
 
