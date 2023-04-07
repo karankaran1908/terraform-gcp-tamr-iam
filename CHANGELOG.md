@@ -1,5 +1,8 @@
 # GCP Tamr IAM module
 
+## v2.0.1 - April 7th 2022
+* Fix issue with outputs
+
 ## v2.0.0 - April 5th 2023
 * Following input variables now required
   * tamr_service_account
