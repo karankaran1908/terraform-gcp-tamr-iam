@@ -1,66 +1,49 @@
-# GCP Tamr IAM Permissions
-This module is used to create the IAM bindings that tamr needs to create resources that aren't provisioned by terraform. For example permissions for tamr to use ephemeral dataproc clusters.
-This repo follows the [terraform standard module structure](https://www.terraform.io/docs/modules/index.html#standard-module-structure).
-
-# Examples
-## Minimal
-This is the most basic example of what it would look like to use this module
-- [Minimal](https://github.com/Datatamer/terraform-gcp-tamr-iam/tree/master/examples/minimal)
-
-# Resources Created
-This modules creates:
-* IAM bindings for tamr
-* (optionally) a service account for tamr to use
-
-<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+<!-- BEGIN_TF_DOCS -->
 ## Requirements
 
 | Name | Version |
 |------|---------|
-| terraform | >= 1.0.0 |
-| google | >= 4.6.0 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0.0 |
+| <a name="requirement_google"></a> [google](#requirement\_google) | >= 5.0, <6.0.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| google | >= 4.6.0 |
+| <a name="provider_google"></a> [google](#provider\_google) | >= 5.0, <6.0.0 |
+
+## Modules
+
+No modules.
+
+## Resources
+
+| Name | Type |
+|------|------|
+| [google_project_iam_member.bq_dataEditor](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/project_iam_member) | resource |
+| [google_project_iam_member.bq_dataOwner](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/project_iam_member) | resource |
+| [google_project_iam_member.bq_user](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/project_iam_member) | resource |
+| [google_project_iam_member.cloud_sql_admin](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/project_iam_member) | resource |
+| [google_project_iam_member.compute_admin](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/project_iam_member) | resource |
+| [google_project_iam_member.dataproc_admin](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/project_iam_member) | resource |
+| [google_project_iam_member.dataproc_worker](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/project_iam_member) | resource |
+| [google_project_iam_member.log_writer](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/project_iam_member) | resource |
+| [google_project_iam_member.metric_writer](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/project_iam_member) | resource |
+| [google_project_iam_member.service_account_user](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/project_iam_member) | resource |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| project\_id | project to create bindings in | `string` | n/a | yes |
-| tamr\_service\_account | If provided this service account will be given permissions tamr needs to run. If not set a service account will be created. | `string` | n/a | yes |
-| additional\_users | additional IAM identities to give IAM access to | `list(string)` | `[]` | no |
-| enabled\_bigquery\_perms | Create IAM role bindings to allow the service account to use bigquery | `bool` | `true` | no |
-| enabled\_monitoring\_perms | Create IAM role bindings to allow the service account to write telemetry to stackdriver | `bool` | `true` | no |
+| <a name="input_project_id"></a> [project\_id](#input\_project\_id) | project to create bindings in | `string` | n/a | yes |
+| <a name="input_tamr_service_account"></a> [tamr\_service\_account](#input\_tamr\_service\_account) | If provided this service account will be given permissions tamr needs to run. If not set a service account will be created. | `string` | n/a | yes |
+| <a name="input_additional_users"></a> [additional\_users](#input\_additional\_users) | additional IAM identities to give IAM access to | `list(string)` | `[]` | no |
+| <a name="input_enabled_bigquery_perms"></a> [enabled\_bigquery\_perms](#input\_enabled\_bigquery\_perms) | Create IAM role bindings to allow the service account to use bigquery | `bool` | `true` | no |
+| <a name="input_enabled_monitoring_perms"></a> [enabled\_monitoring\_perms](#input\_enabled\_monitoring\_perms) | Create IAM role bindings to allow the service account to write telemetry to stackdriver | `bool` | `true` | no |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| service\_account\_email | Email of the service account given permissions to |
-
-<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
-
-# References
-This repo is based on:
-* [terraform standard module structure](https://www.terraform.io/docs/modules/index.html#standard-module-structure)
-* [templated terraform module](https://github.com/tmknom/template-terraform-module)
-
-# Development
-## Generating Docs
-Run `make terraform/docs` to generate the section of docs around terraform inputs, outputs and requirements.
-
-## Checkstyles
-Run `make lint`, this will run terraform fmt, in addition to a few other checks to detect whitespace issues.
-NOTE: this requires having docker working on the machine running the test
-
-## Releasing new versions
-* Update version contained in `VERSION`
-* Document changes in `CHANGELOG.md`
-* Create a tag in github for the commit associated with the version
-
-# License
-Apache 2 Licensed. See LICENSE for full details.
+| <a name="output_service_account_email"></a> [service\_account\_email](#output\_service\_account\_email) | Email of the service account given permissions to |
+<!-- END_TF_DOCS -->

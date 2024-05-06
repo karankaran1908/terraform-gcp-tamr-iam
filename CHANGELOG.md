@@ -1,5 +1,8 @@
 # GCP Tamr IAM module
 
+## v3.0.1 - May 6th 2024
+* Update Google terraform provider version
+
 ## v2.0.1 - April 7th 2022
 * Fix issue with outputs
 
